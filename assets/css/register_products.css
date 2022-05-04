@@ -1,0 +1,8 @@
+.register__description {
+  height: 15.75rem;
+}
+
+.register__price-container,
+.register__description-container {
+  width: 50%;
+}

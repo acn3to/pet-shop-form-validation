@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Shop | Create account</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="./assets/css/base/base.css">
+    <link rel="stylesheet" href="./assets/css/register.css">
+    <link rel="stylesheet" href="./assets/css/components/card.css">
+    <link rel="stylesheet" href="./assets/css/components/inputs.css">
+    <link rel="stylesheet" href="./assets/css/components/button.css">
+</head>
+<body>
+    <main class="container flex flex--column flex--center">
+        <div class="register-header">
+            <img src="./assets/img/logo.svg" alt="Logo" class="register-header__logo">
+            <h1 class="register-header__title">Pet Shop</h1>
+        </div>
+        <section class="card">
+            <h2 class="card__title">Finish your registration</h2>
+            <form action="./register_completed.html" class="form flex flex--column">
+                <fieldset>
+                    <legend class="form__subtitle">Basic information</legend>
+                    <div class="input-container">
+                        <input name="name" id="name" class="input" type="text" placeholder="name">
+                        <label class="input-label" for="name">name</label>
+                        <span class="input-message-error">Invalid field!</span>
+                    </div>
+                    <div class="input-container">
+                        <input name="email" id="email" class="input" type="text" placeholder="Email">
+                        <label class="input-label" for="email">Email</label>
+                        <span class="input-message-error">Invalid field!</span>
+                    </div>
+                    <div class="input-container">
+                        <input name="Password" id="Password" class="input" type="text" placeholder="Password">
+                        <label class="input-label" for="Password">Password</label>
+                        <span class="input-message-error">Invalid field!</span>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend class="form__subtitle">Personal information</legend>
+                    <div class="input-container">
+                        <input name="birth" id="birth" class="input" type="text" placeholder="Birth date">
+                        <label class="input-label" for="birth">Birth date</label>
+                        <span class="input-message-error">Invalid field!</span>
+                    </div>
+                    <div class="input-container">
+                        <input name="cpf" id="cpf" class="input" type="text" placeholder="CPF">
+                        <label class="input-label" for="cpf">CPF</label>
+                        <span class="input-message-error">Invalid field!</span>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend class="form__subtitle">Address</legend>
+                    <div class="input-container">
+                        <input name="cep" id="cep" class="input" type="text" placeholder="CEP">
+                        <label class="input-label" for="cep">CEP</label>
+                        <span class="input-message-error">Invalid field!</span>
+                    </div>
+                    <div class="input-container">
+                        <input name="address" id="address" class="input" type="text" placeholder="address">
+                        <label class="input-label" for="address">Address</label>
+                        <span class="input-message-error">Invalid field!</span>
+                    </div>
+                    <div class="input-container">
+                        <input name="city" id="city" class="input" type="text" placeholder="city">
+                        <label class="input-label" for="city">City</label>
+                        <span class="input-message-error">Invalid field!</span>
+                    </div>
+                    <div class="input-container">
+                        <input name="state" id="state" class="input" type="text" placeholder="state">
+                        <label class="input-label" for="state">State</label>
+                        <span class="input-message-error">Invalid field!</span>
+                    </div>
+                </fieldset>
+                <button class="button">Register</a>
+            </form>
+        </section>
+    </main>
+</body>
+</html>
