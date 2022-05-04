@@ -24,17 +24,21 @@
                 <fieldset>
                     <legend class="form__subtitle">Basic information</legend>
                     <div class="input-container">
-                        <input name="name" id="name" class="input" type="text" placeholder="name">
+                        <input name="name" id="name" class="input" type="text" placeholder="name" require>
                         <label class="input-label" for="name">name</label>
                         <span class="input-message-error">Invalid field!</span>
                     </div>
                     <div class="input-container">
-                        <input name="email" id="email" class="input" type="text" placeholder="Email">
+                        <input name="email" id="email" class="input" type="email" placeholder="Email" require>
                         <label class="input-label" for="email">Email</label>
                         <span class="input-message-error">Invalid field!</span>
                     </div>
                     <div class="input-container">
-                        <input name="Password" id="Password" class="input" type="text" placeholder="Password">
+                        <input name="password" id="password" class="input" type="password" placeholder="Password" 
+                        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?!.*[ !@#$%^&*_=+-]).{6,12}$" 
+                        title="The password must contain between 6 and 12 characters
+                        and at least one lower-case character, one upper-case character, 
+                        one digit and no special characters" require>
                         <label class="input-label" for="Password">Password</label>
                         <span class="input-message-error">Invalid field!</span>
                     </div>
