@@ -40,9 +40,10 @@
                 class="input"
                 type="text"
                 placeholder="name"
-                require
+                data-type="name"
+                required
               />
-              <label class="input-label" for="name">name</label>
+              <label class="input-label" for="name">Name</label>
               <span class="input-message-error">Invalid field!</span>
             </div>
             <div class="input-container">
@@ -52,7 +53,8 @@
                 class="input"
                 type="email"
                 placeholder="Email"
-                require
+                data-type="email"
+                required
               />
               <label class="input-label" for="email">Email</label>
               <span class="input-message-error">Invalid field!</span>
@@ -68,7 +70,8 @@
                 title="The password must contain between 6 and 12 characters
                         and at least one lower-case character, one upper-case character, 
                         one digit and no special characters"
-                require
+                data-type="password"
+                required
               />
               <label class="input-label" for="Password">Password</label>
               <span class="input-message-error">Invalid field!</span>
