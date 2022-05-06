@@ -43,11 +43,26 @@ const errorMessages = {
     valueMissing: "The CPF field must be filed!",
     customError: "The CPF is invalid!",
   },
+  cep: {
+    valueMissing: "The CEP field must be filed!",
+    patternMismatch: "This is not a valid CEP.",
+    customError: "CEP not found.",
+  },
+  address: {
+    valueMissing: "The address field must be filed!",
+  },
+  city: {
+    valueMissing: "The city field must be filed!",
+  },
+  state: {
+    valueMissing: "The state field must be filed!",
+  },
 };
 
 const validators = {
   birthDate: (input) => validateBirthDate(input),
   cpf: (input) => validateCpf(input),
+  cep: (input) => recoverCep(input),
 };
 
 function showErrorMessage(inputType, input) {
@@ -146,4 +161,41 @@ function checkCpfStructure(cpf) {
 
 function confirmDigit(sum) {
   return 11 - (sum % 11);
+}
+
+function recoverCep(input) {
+  const cep = input.value.replace(/\D/g, "");
+  const url = `https://viacep.com.br/ws/${cep}/json/`;
+  const options = {
+    method: "GET",
+    mode: "cors",
+    headers: {
+      "content-type": "application/json;charset=utf-8",
+    },
+  };
+
+  if (!input.validity.patternMismatch && !input.validity.valueMissing) {
+    fetch(url, options)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        if (data.erro) {
+          input.setCustomValidity("CEP not found.");
+          return;
+        }
+        input.setCustomValidity("");
+        fillAddressWithCep(data);
+        return;
+      });
+  }
+}
+
+function fillAddressWithCep(data) {
+  const address = document.querySelector('[data-type="address"]');
+  const city = document.querySelector('[data-type="city"]');
+  const state = document.querySelector('[data-type="state"]');
+
+  address.value = data.logradouro;
+  city.value = data.localidade;
+  state.value = data.uf;
 }
