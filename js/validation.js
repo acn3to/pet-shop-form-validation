@@ -57,6 +57,9 @@ const errorMessages = {
   state: {
     valueMissing: "The state field must be filed!",
   },
+  price: {
+    valueMissing: "The price field must be filed!",
+  },
 };
 
 const validators = {

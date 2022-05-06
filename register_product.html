@@ -28,7 +28,7 @@
           <li class="header__link"><a href="#">Dashboard</a></li>
           <li class="header__link"><a href="#">Products</a></li>
           <li class="header__link">
-            <a href="list_client.html">clients </a>
+            <a href="header__link">Clients </a>
           </li>
           <li class="header__link"><a href="#">Pets</a></li>
         </ul>
@@ -47,9 +47,11 @@
               id="name"
               class="input"
               type="text"
+              data-type="name"
               placeholder="name"
+              required
             />
-            <label class="input-label" for="name">name</label>
+            <label class="input-label" for="name">Name</label>
             <span class="input-message-error">Invalid field!</span>
           </div>
           <div class="input-container register__price-container">
@@ -58,7 +60,9 @@
               id="price"
               class="input"
               type="text"
+              data-type="price"
               placeholder="Price"
+              required
             />
             <label class="input-label" for="price">Price</label>
             <span class="input-message-error">Invalid field!</span>
@@ -77,5 +81,7 @@
         </form>
       </section>
     </main>
+    <script src="./js/app.js" type="module"></script>
+    <script src="https://github.com/codermarcos/simple-mask-money/releases/download/v3.0.0/simple-mask-money.js"></script>
   </body>
 </html>
