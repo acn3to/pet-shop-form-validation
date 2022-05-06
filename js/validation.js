@@ -24,25 +24,30 @@ const errorTypes = [
 
 const errorMessages = {
   name: {
-    valueMissing: "The name filed must be filed!",
+    valueMissing: "The name field must be filed!",
   },
   email: {
-    valueMissing: "The email filed must be filed!",
+    valueMissing: "The email field must be filed!",
     typeMismatch: "This is not a valid email",
   },
   password: {
-    valueMissing: "The password filed must be filed!",
+    valueMissing: "The password field must be filed!",
     patternMismatch:
       "The password must contain between 6 and 12 characters and at least one lower-case character, one upper-case character, one digit and no special characters.",
   },
   birthDate: {
-    valueMissing: "The birth date must be filed filed!",
+    valueMissing: "The birth date field must be filed!",
     customError: "You must be 18 years old!",
+  },
+  cpf: {
+    valueMissing: "The CPF field must be filed!",
+    customError: "The CPF is invalid!",
   },
 };
 
 const validators = {
   birthDate: (input) => validateBirthDate(input),
+  cpf: (input) => validateCpf(input),
 };
 
 function showErrorMessage(inputType, input) {
@@ -74,4 +79,71 @@ function overAge(date) {
     date.getUTCDate()
   );
   return datePlus18 <= actualDate;
+}
+
+function validateCpf(input) {
+  const formattedCpf = input.value.replace(/\D/g, "");
+  let message = "";
+
+  if (!checkRepeatedCpf(formattedCpf) || !checkCpfStructure(formattedCpf)) {
+    message = "The CPF is invalid!";
+  }
+
+  input.setCustomValidity(message);
+}
+
+function checkRepeatedCpf(cpf) {
+  const repeatedValues = [
+    "00000000000",
+    "11111111111",
+    "22222222222",
+    "33333333333",
+    "44444444444",
+    "55555555555",
+    "66666666666",
+    "77777777777",
+    "88888888888",
+    "99999999999",
+  ];
+  let validCpf = true;
+
+  repeatedValues.forEach((value) => {
+    if (value === cpf) {
+      validCpf = false;
+    }
+  });
+
+  return validCpf;
+}
+
+function checkTesterDigit(cpf, multiplier) {
+  if (multiplier >= 12) {
+    return true;
+  }
+
+  let initialMultiplier = multiplier;
+  let sum = 0;
+  const cpfWithoutDigits = cpf.substring(0, multiplier - 1).split("");
+  const testerDigit = cpf.charAt(multiplier - 1);
+
+  for (let counter = 0; initialMultiplier > 1; initialMultiplier--) {
+    sum = sum + cpfWithoutDigits[counter] * initialMultiplier;
+    counter++;
+  }
+
+  if (testerDigit == confirmDigit(sum)) {
+    return checkTesterDigit(cpf, multiplier + 1);
+  }
+
+  return false;
+}
+
+function checkCpfStructure(cpf) {
+  const multiplier = 10;
+
+  return checkTesterDigit(cpf, multiplier);
+}
+
+function confirmDigit(sum) {
+  return 11 - (sum % 11);
 }
